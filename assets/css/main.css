@@ -2312,3 +2312,11 @@ color:#fff; text-align:center; backdrop-filter: blur(2px);
   .modal-card .card-body{padding:10px; text-align: center;}
   .modal-card .card-title{font-weight:600;}
   .modal-card .card-meta{font-size:0.9rem; color:#666; margin-top:6px}
+
+  /* view more eye icon */
+.view-more{position:absolute; inset:auto 12px 12px auto; display:flex; gap:8px; align-items:center; background:rgba(0,0,0,0.45); color:#fff; padding:6px 10px; border-radius:999px; font-size:0.9rem; opacity:0; transform:translateY(6px); transition:opacity .18s, transform .18s}
+.category-card:hover .view-more{opacity:1; transform:translateY(0)}
+.view-more svg{width:16px; height:16px; display:block}
+
+/* eye overlay on modal card */
+.modal-card .view-more{right:10px; bottom:10px; left:auto}
