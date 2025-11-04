@@ -656,6 +656,12 @@ section,
   position: relative;
 }
 
+.portfolio .section-title {
+  text-align: center;
+  padding-bottom: 20px!important;
+  position: relative;
+}
+
 .section-title h2 {
   font-size: 42px;
   font-weight: 700;
@@ -765,7 +771,7 @@ section,
 }
 
 .services h3 {
-  font-size: 1.8rem!important;
+  font-size: 1.78rem!important;
   font-family: Questrial;
   font-weight: 300;
   color: #84523a;
@@ -794,6 +800,11 @@ section,
   font-family: Poppins;
   font-size: 1.2rem;
   color: #3f3f3f;
+  margin: 35px 0 15px 0;
+}
+
+.portfolio p {
+  max-width: 100%!important;
 }
 
 .about .about-content .head-line {
@@ -832,6 +843,73 @@ section,
   line-height: 1.6;
   text-align: center;
 } */
+
+.categories-grid{display:grid; grid-template-columns:repeat(2, 1fr); gap:24px; margin-top:24px}
+
+@media (max-width:768px){
+.categories-grid{grid-template-columns:1fr}
+}
+
+.category-card{
+position:relative;
+min-height:250px;
+border-radius:12px;
+overflow:hidden;
+cursor:pointer;
+display:flex; align-items:flex-end; justify-content:center;
+transition:transform .28s ease, box-shadow .28s ease;
+box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+background-size:cover; background-position:center;
+}
+.category-card:focus{outline:3px solid rgba(232,117,50,0.35)}
+.category-card:hover{transform:translateY(-6px); box-shadow:0 16px 36px rgba(0,0,0,0.12)}
+
+
+.category-overlay{
+width:100%; padding:18px; background:linear-gradient(0deg, rgba(0,0,0,0.45), rgba(0,0,0,0.1) 90%);
+color:#fff; text-align:center; backdrop-filter: blur(2px);
+}
+.category-title{font-weight:600; font-size:1.3rem; letter-spacing:0.2px; font-family: 'Poppins';}
+.category-sub {
+  font-size:0.92rem; 
+  opacity:0.9; 
+  margin-top:6px;
+  font-family: 'Poppins';
+}
+
+
+/* Modal slider */
+.pf-modal{position:fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:2000; background:rgba(0,0,0,0.75)}
+.pf-modal.open{display:flex}
+.pf-modal .slider{position:relative; width:92%; max-width:980px; max-height:86vh; display:flex; align-items:center; justify-content:center}
+.pf-modal .slide{max-width:100%; max-height:86vh; display:none; flex-direction:column; align-items:center}
+.pf-modal .slide.show{display:flex}
+.pf-modal img{max-width:100%; max-height:76vh; object-fit:contain; border-radius:8px}
+
+
+.pf-caption{margin-top:12px; color:#fff; font-size:0.98rem; text-align:center}
+
+
+/* Controls */
+.pf-control{position:absolute; top:50%; transform:translateY(-50%); width:48px; height:48px; border-radius:50%; background:rgba(0,0,0,0.45); display:flex; align-items:center; justify-content:center; color:#fff; cursor:pointer}
+.pf-control:hover{background:rgba(0,0,0,0.6)}
+.pf-prev{left:-16px}
+.pf-next{right:-16px}
+.pf-close{position:absolute; top:12px; right:12px; width:40px; height:40px; border-radius:8px; background:rgba(0,0,0,0.45); display:flex; align-items:center; justify-content:center; color:#fff; cursor:pointer}
+
+
+/* Dots */
+.pf-dots{position:absolute; left:50%; transform:translateX(-50%); bottom:12px; display:flex; gap:8px; margin-bottom: 2rem;}
+.pf-dots button{width:10px; height:10px; border-radius:50%; border:none; background:rgba(255,255,255,0.35); cursor:pointer}
+.pf-dots button.active{background:rgba(255,255,255,0.95)}
+
+
+/* Responsive tweaks */
+@media (max-width:560px){
+.category-card{min-height:160px}
+.pf-control{display:none}
+.pf-modal img{max-height:60vh}
+}
 
 
 .floral-underline {
@@ -872,7 +950,7 @@ section,
   font-weight: 600;
   line-height: 1.2;
   letter-spacing: 0.5px;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   text-align: center;
 }
 
@@ -881,7 +959,7 @@ section,
     font-size: 5rem;
   }
   .pre-about-heading {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
 }
 .hero .content h3 {
   font-size: 2rem;
@@ -927,7 +1005,12 @@ section,
   font-family: Poppins;
   font-size: 1.1rem;
   color: #3f3f3f;
+  margin: 15px 0 15px 0;
 }
+.portfolio .section-title{
+  padding-bottom: 0!important;
+}
+
 .hero .content .lead {
   font-size: 1.05rem!important;
 }
@@ -942,7 +1025,7 @@ section,
 
 .hero .content .lead {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   font-weight: 400;
   margin-bottom: 2rem;
   color: #3c3c3c;;
@@ -1209,7 +1292,7 @@ section,
 .skills .skill-box p {
   font-size: 0.9rem;
   margin-bottom: 0.8rem;
-  opacity: 0.6;
+  opacity: 0.8;
 }
 
 .skills .skill-box .progress {
