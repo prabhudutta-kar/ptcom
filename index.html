@@ -344,68 +344,66 @@ Her journey began as a Faculty with <a href="https://www.artofliving.org/in-en">
 
     </section><!-- /Impact Section -->
 
-        <!-- Portfolio Section -->
 <section id="portfolio" class="portfolio section">
-<div class="container section-title">
-  <h2>Portfolio</h2>
-  <div class="title-shape" aria-hidden="true">
-    <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg" width="200" height="20">
-    <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor" stroke-width="2"></path>
-    </svg>
+  <div class="container section-title">
+    <h2>Portfolio</h2>
+    <div class="title-shape" aria-hidden="true">
+      <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg" width="200" height="20">
+        <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor" stroke-width="2"></path>
+      </svg>
+    </div>
+    <p class="tag">Worked with diverse audiences to foster holistic wellbeing, mindful living, and meaningful human connections.</p>
   </div>
-  <p class="tag">Worked with diverse audiences to foster holistic wellbeing, mindful living, and meaningful human connections.</p>
-</div>
 
+  <div class="container">
+    <!-- FILTER TABS -->
+    <ul class="portfolio-filters" role="tablist" aria-label="Portfolio categories">
+      <li class="filter-active" data-filter="*" role="tab" aria-selected="true">All</li>
+      <li data-filter=".filter-web" role="tab">Corporates &amp; Startups</li>
+      <li data-filter=".filter-graphics" role="tab">Educational</li>
+      <li data-filter=".filter-motion" role="tab">Personal Well-being</li>
+      <li data-filter=".filter-brand" role="tab">Online Workshop</li>
+    </ul>
 
-<div class="container">
-<!-- Category cards (replaces filter tabs and large list) -->
-<div class="categories-grid" role="list">
-<div class="category-card" tabindex="0" role="button" data-category="corporates" aria-label="Open Corporates & Startups gallery" style="background-image:url('assets/img/portfolio/p9.jpeg')">
-<div class="category-overlay">
-<div class="category-title">Corporates &amp; Startups</div>
-<div class="category-sub">Corporate Health &amp; Wellness Program</div>
-</div>
-</div>
+    <!-- Category cards (default visible) -->
+    <div class="categories-grid" role="list" id="categoriesGrid">
+      <div class="category-card" tabindex="0" role="button" data-filter=".filter-web" data-key="corporates" style="background-image:url('assets/img/portfolio/p9.jpeg')">
+        <div class="category-overlay">
+          <div class="category-title">Corporates &amp; Startups</div>
+          <div class="category-sub">Corporate Health &amp; Wellness Program</div>
+        </div>
+      </div>
 
+      <div class="category-card" tabindex="0" role="button" data-filter=".filter-graphics" data-key="educational" style="background-image:url('assets/img/portfolio/p0.jpg')">
+        <div class="category-overlay">
+          <div class="category-title">Educational</div>
+          <div class="category-sub">Wellness For Young Minds</div>
+        </div>
+      </div>
 
-<div class="category-card" tabindex="0" role="button" data-category="educational" aria-label="Open Educational gallery" style="background-image:url('assets/img/portfolio/p0.jpg')">
-<div class="category-overlay">
-<div class="category-title">Educational</div>
-<div class="category-sub">Wellness For Young Minds</div>
-</div>
-</div>
+      <div class="category-card" tabindex="0" role="button" data-filter=".filter-motion" data-key="wellbeing" style="background-image:url('assets/img/portfolio/p4.jpg')">
+        <div class="category-overlay">
+          <div class="category-title">Personal Well-being</div>
+          <div class="category-sub">Happiness program - with The Art of Living</div>
+        </div>
+      </div>
 
-
-<div class="category-card" tabindex="0" role="button" data-category="wellbeing" aria-label="Open Personal Well-being gallery" style="background-image:url('assets/img/portfolio/p4.jpg')">
-<div class="category-overlay">
-<div class="category-title">Personal Well-being</div>
-<div class="category-sub">Happiness program - with The Art of Living</div>
-</div>
-</div>
-
-
-<div class="category-card" tabindex="0" role="button" data-category="online" aria-label="Open Online Workshop gallery" style="background-image:url('assets/img/portfolio/p5.jpg')">
-<div class="category-overlay">
-<div class="category-title">Online Workshop</div>
-<div class="category-sub">Wellness, wherever you are!</div>
-</div>
-</div>
-</div>
-</div>
+      <div class="category-card" tabindex="0" role="button" data-filter=".filter-brand" data-key="online" style="background-image:url('assets/img/portfolio/p5.jpg')">
+        <div class="category-overlay">
+          <div class="category-title">Online Workshop</div>
+          <div class="category-sub">Wellness, wherever you are!</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- Modal / Slider (hidden initially) -->
-<div class="pf-modal" id="pfModal" aria-hidden="true" role="dialog" aria-label="Portfolio image gallery">
-  <div class="slider" role="document">
-  <button class="pf-close" id="pfClose" aria-label="Close gallery">✕</button>
-  <button class="pf-control pf-prev" id="pfPrev" aria-label="Previous image">◀</button>
-  <div class="slides-viewport" id="slidesViewport" style="width:100%; display:flex; align-items:center; justify-content:center">
-  <!-- slides injected by JS -->
-  </div>
-  <button class="pf-control pf-next" id="pfNext" aria-label="Next image">▶</button>
-  <!-- <div class="pf-dots show-desktop" id="pfDots" aria-hidden="false"></div> -->
-  <div class="pf-dots" id="pfDots" aria-hidden="false"></div>
-  <br>
+<!-- Modal to show image cards for a chosen category -->
+<div id="categoryModal" class="category-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Category images">
+  <div class="category-modal-panel" role="document">
+    <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+    <h3 id="modalTitle" class="modal-title"></h3>
+    <div id="modalGrid" class="modal-grid" aria-live="polite"></div>
   </div>
 </div>
 
@@ -806,146 +804,148 @@ Her journey began as a Faculty with <a href="https://www.artofliving.org/in-en">
         });
     </script>
 
-   <script>
-(function() {
-  // Gallery data - grouped by categories. Each item: {src, caption}
+<script>
+(function(){
+  // gallery items grouped by key (must match data-key on category-card)
   const GALLERIES = {
     corporates: [
       {src:'assets/img/portfolio/p2.jpg', caption:'Mohs10 Technologies, Bhubaneswar'},
       {src:'assets/img/portfolio/p9.jpeg', caption:'Mohs10 Technologies, Bhubaneswar'},
       {src:'assets/img/portfolio/p22.jpeg', caption:'Mohs10 Technologies, Bhubaneswar'},
-      {src:'assets/img/portfolio/p6.jpg', caption:'LIC, Odisha'},
-      {src:'assets/img/portfolio/p8.jpg', caption:'LIC, Odisha'},
-      {src:'assets/img/portfolio/p21.jpg', caption:'LIC, Odisha'}
+      {src:'assets/img/portfolio/p6.jpg', caption:'LIC, Odisha'}
     ],
     educational: [
       {src:'assets/img/portfolio/p10.jpg', caption:'NIT, Rourkela'},
       {src:'assets/img/portfolio/p0.jpg', caption:'NIT, Rourkela'},
       {src:'assets/img/portfolio/p3.jpg', caption:'NIT, Rourkela'},
+      {src:'assets/img/portfolio/p11.jpg', caption:'College Program'}
     ],
     wellbeing: [
       {src:'assets/img/portfolio/p4.jpg', caption:'Rourkela, Odisha'},
       {src:'assets/img/portfolio/p15.jpg', caption:'Rourkela, Odisha'},
       {src:'assets/img/portfolio/p16.jpg', caption:'Rourkela, Odisha'},
-      {src:'assets/img/portfolio/p17.jpg', caption:'Rourkela, Odisha'},
-      {src:'assets/img/portfolio/p19.jpg', caption:'Rourkela, Odisha'},
-      {src:'assets/img/portfolio/p20.jpg', caption:'Rourkela, Odisha'}
+      {src:'assets/img/portfolio/p17.jpg', caption:'Rourkela, Odisha'}
     ],
     online: [
-      {src:'assets/img/portfolio/p5.jpg', caption:'India'},
-      {src:'assets/img/portfolio/p12.jpg', caption:'India'},
-      {src:'assets/img/portfolio/p13.jpg', caption:'India'},
-      {src:'assets/img/portfolio/p14.jpg', caption:'India'}
+      {src:'assets/img/portfolio/p5.jpg', caption:'Guided Live Online Session'},
+      {src:'assets/img/portfolio/p12.jpg', caption:'Online Workshop 2'},
+      {src:'assets/img/portfolio/p13.jpg', caption:'Virtual Wellness'},
+      {src:'assets/img/portfolio/p14.jpg', caption:'Online Course'}
     ]
   };
 
-  const modal = document.getElementById('pfModal');
-  const slidesViewport = document.getElementById('slidesViewport');
-  const dotsEl = document.getElementById('pfDots');
-  const prevBtn = document.getElementById('pfPrev');
-  const nextBtn = document.getElementById('pfNext');
-  const closeBtn = document.getElementById('pfClose');
+  const tabs = document.querySelectorAll('.portfolio-filters li');
+  const categoryCards = document.querySelectorAll('.category-card');
 
-  let currentGallery = null;
-  let currentIndex = 0;
+  const modal = document.getElementById('categoryModal');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalGrid = document.getElementById('modalGrid');
+  const modalClose = document.getElementById('modalClose');
 
-  // build slides for a given gallery
-  function buildSlides(key){
-    slidesViewport.innerHTML = '';
-    dotsEl.innerHTML = '';
+  // Filter category cards (tabs filter the four cards)
+  function applyCardFilter(filter) {
+    tabs.forEach(t => {
+      if ((t.getAttribute('data-filter') || '*') === filter) {
+        t.classList.add('filter-active');
+        t.setAttribute('aria-selected','true');
+      } else {
+        t.classList.remove('filter-active');
+        t.setAttribute('aria-selected','false');
+      }
+    });
+
+    const normalized = filter === '*' ? '*' : filter.replace('.',''); // e.g. 'filter-web'
+    categoryCards.forEach(card => {
+      const cardFilter = card.getAttribute('data-filter') || '';
+      if (filter === '*' || cardFilter === filter) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  // Build modal grid for a key
+  function openCategoryModal(key) {
     const items = GALLERIES[key] || [];
+    modalTitle.textContent = {
+      corporates: 'Corporates & Startups',
+      educational: 'Educational',
+      wellbeing: 'Personal Well-being',
+      online: 'Online Workshop'
+    }[key] || key;
 
-    items.forEach((it, i) => {
-      const slide = document.createElement('div');
-      slide.className = 'slide' + (i === 0 ? ' show' : '');
-
-      const img = document.createElement('img');
-      img.src = it.src;
-      img.alt = it.caption || '';
-
-      const caption = document.createElement('div');
-      caption.className = 'pf-caption';
-      caption.innerText = it.caption || '';
-
-      slide.appendChild(img);
-      slide.appendChild(caption);
-      slidesViewport.appendChild(slide);
-
-      const dot = document.createElement('button');
-      dot.setAttribute('aria-label', 'Go to image ' + (i + 1));
-      if (i === 0) dot.classList.add('active');
-      dot.addEventListener('click', () => showIndex(i));
-      dotsEl.appendChild(dot);
-    });
-  }
-
-  function openGallery(key, startIndex = 0){
-    if (!GALLERIES[key] || GALLERIES[key].length === 0) return;
-    currentGallery = key;
-    currentIndex = startIndex;
-    buildSlides(key);
-    showIndex(currentIndex);
-    modal.classList.add('open');
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeGallery(){
-    modal.classList.remove('open');
-    modal.setAttribute('aria-hidden', 'true');
-    slidesViewport.innerHTML = '';
-    dotsEl.innerHTML = '';
-    document.body.style.overflow = '';
-  }
-
-  function showIndex(idx){
-    const slides = slidesViewport.querySelectorAll('.slide');
-    const dots = dotsEl.querySelectorAll('button');
-    if (slides.length === 0) return;
-    if (idx < 0) idx = slides.length - 1;
-    if (idx >= slides.length) idx = 0;
-    slides.forEach(s => s.classList.remove('show'));
-    dots.forEach(d => d.classList.remove('active'));
-    slides[idx].classList.add('show');
-    dots[idx].classList.add('active');
-    currentIndex = idx;
-  }
-
-  // controls
-  if (prevBtn) prevBtn.addEventListener('click', () => showIndex(currentIndex - 1));
-  if (nextBtn) nextBtn.addEventListener('click', () => showIndex(currentIndex + 1));
-  if (closeBtn) closeBtn.addEventListener('click', closeGallery);
-
-  // click outside image closes
-  if (modal) {
-    modal.addEventListener('click', function(e){
-      if (e.target === modal) closeGallery();
-    });
-  }
-
-  // keyboard nav
-  document.addEventListener('keydown', function(e){
-    if (modal && modal.classList.contains('open')) {
-      if (e.key === 'ArrowLeft') showIndex(currentIndex - 1);
-      if (e.key === 'ArrowRight') showIndex(currentIndex + 1);
-      if (e.key === 'Escape') closeGallery();
+    modalGrid.innerHTML = '';
+    if (items.length === 0) {
+      modalGrid.innerHTML = '<p>No items found.</p>';
+    } else {
+      items.forEach(it => {
+        const card = document.createElement('div');
+        card.className = 'modal-card';
+        const img = document.createElement('div');
+        img.className = 'card-image';
+        img.style.backgroundImage = `url('${it.src}')`;
+        const body = document.createElement('div');
+        body.className = 'card-body';
+        const title = document.createElement('div');
+        title.className = 'card-title';
+        title.textContent = it.caption || '';
+        const meta = document.createElement('div');
+        meta.className = 'card-meta';
+        meta.textContent = ''; // extra meta if you want
+        body.appendChild(title);
+        body.appendChild(meta);
+        card.appendChild(img);
+        card.appendChild(body);
+        modalGrid.appendChild(card);
+      });
     }
+
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden','false');
+    // lock scroll
+    document.documentElement.style.overflow = 'hidden';
+    // focus modal for accessibility
+    modalClose.focus();
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden','true');
+    modalGrid.innerHTML = '';
+    document.documentElement.style.overflow = '';
+  }
+
+  // Tab click -> filter category cards
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const filter = tab.getAttribute('data-filter') || '*';
+      applyCardFilter(filter);
+    });
   });
 
-  // attach trigger on cards
-  document.querySelectorAll('.category-card').forEach(card => {
-    card.addEventListener('click', function(){
-      const key = this.getAttribute('data-category');
-      openGallery(key, 0);
+  // Category card click -> open modal with items for that category
+  categoryCards.forEach(card => {
+    card.addEventListener('click', () => {
+      const key = card.getAttribute('data-key'); // corporates, educational, wellbeing, online
+      if (key) openCategoryModal(key);
     });
-    card.addEventListener('keydown', function(e){
+    card.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        const key = this.getAttribute('data-category');
-        openGallery(key, 0);
+        const key = card.getAttribute('data-key');
+        if (key) openCategoryModal(key);
       }
     });
   });
+
+  // modal close handlers
+  modalClose.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
+
+  // initial: show all category cards
+  applyCardFilter('*');
 
 })();
 </script>
