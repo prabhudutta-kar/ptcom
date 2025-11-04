@@ -807,7 +807,7 @@ Her journey began as a Faculty with <a href="https://www.artofliving.org/in-en">
             if (width <= 575) mode = 'mobile';
             else if (width <= 991) mode = 'tablet';
             
-            // Don't override demo mode, just show current viewport
+            // Don't override demo mode just show current viewport
             const currentSizeSpan = document.getElementById('current-size');
             if (currentDemoMode === 'desktop') {
                 if (width <= 380) currentSizeSpan.textContent = '≤380px';
