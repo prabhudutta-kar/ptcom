@@ -372,12 +372,20 @@ Her journey began as a Faculty with <a href="https://www.artofliving.org/in-en">
           <div class="category-title">Corporates &amp; Startups</div>
           <div class="category-sub">Corporate Health &amp; Wellness Program</div>
         </div>
+        <div class="view-more" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 5C7 5 2.73 8.11 1 12c1.73 3.89 6 7 11 7s9.27-3.11 11-7c-1.73-3.89-6-7-11-7z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span style="margin-left:6px;">View more</span>
+        </div>
       </div>
 
       <div class="category-card" tabindex="0" role="button" data-filter=".filter-graphics" data-key="educational" style="background-image:url('assets/img/portfolio/p0.jpg')">
         <div class="category-overlay">
           <div class="category-title">Educational</div>
           <div class="category-sub">Wellness For Young Minds</div>
+          <div class="view-more" aria-hidden="true">
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 5C7 5 2.73 8.11 1 12c1.73 3.89 6 7 11 7s9.27-3.11 11-7c-1.73-3.89-6-7-11-7z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<span style="margin-left:6px;">View more</span>
+</div>
         </div>
       </div>
 
@@ -385,6 +393,10 @@ Her journey began as a Faculty with <a href="https://www.artofliving.org/in-en">
         <div class="category-overlay">
           <div class="category-title">Personal Well-being</div>
           <div class="category-sub">Happiness program - with The Art of Living</div>
+          <div class="view-more" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 5C7 5 2.73 8.11 1 12c1.73 3.89 6 7 11 7s9.27-3.11 11-7c-1.73-3.89-6-7-11-7z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span style="margin-left:6px;">View more</span>
+          </div>
         </div>
       </div>
 
@@ -392,6 +404,10 @@ Her journey began as a Faculty with <a href="https://www.artofliving.org/in-en">
         <div class="category-overlay">
           <div class="category-title">Online Workshop</div>
           <div class="category-sub">Wellness, wherever you are!</div>
+          <div class="view-more" aria-hidden="true">
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 5C7 5 2.73 8.11 1 12c1.73 3.89 6 7 11 7s9.27-3.11 11-7c-1.73-3.89-6-7-11-7z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<span style="margin-left:6px;">View more</span>
+</div>
         </div>
       </div>
     </div>
@@ -805,8 +821,8 @@ Her journey began as a Faculty with <a href="https://www.artofliving.org/in-en">
     </script>
 
 <script>
-(function(){
-  // gallery items grouped by key (must match data-key on category-card)
+(function() {
+  // Keep this GALLERIES object in this block (or remove if you already define it earlier)
   const GALLERIES = {
     corporates: [
       {src:'assets/img/portfolio/p2.jpg', caption:'Mohs10 Technologies, Bhubaneswar'},
@@ -834,27 +850,27 @@ Her journey began as a Faculty with <a href="https://www.artofliving.org/in-en">
     ]
   };
 
+  // DOM refs
   const tabs = document.querySelectorAll('.portfolio-filters li');
   const categoryCards = document.querySelectorAll('.category-card');
-
   const modal = document.getElementById('categoryModal');
   const modalTitle = document.getElementById('modalTitle');
   const modalGrid = document.getElementById('modalGrid');
   const modalClose = document.getElementById('modalClose');
 
-  // Filter category cards (tabs filter the four cards)
+  // Apply filter to category cards (tabs filter the 4 big cards)
   function applyCardFilter(filter) {
     tabs.forEach(t => {
-      if ((t.getAttribute('data-filter') || '*') === filter) {
+      const tFilter = t.getAttribute('data-filter') || '*';
+      if (tFilter === filter) {
         t.classList.add('filter-active');
-        t.setAttribute('aria-selected','true');
+        t.setAttribute('aria-selected', 'true');
       } else {
         t.classList.remove('filter-active');
-        t.setAttribute('aria-selected','false');
+        t.setAttribute('aria-selected', 'false');
       }
     });
 
-    const normalized = filter === '*' ? '*' : filter.replace('.',''); // e.g. 'filter-web'
     categoryCards.forEach(card => {
       const cardFilter = card.getAttribute('data-filter') || '';
       if (filter === '*' || cardFilter === filter) {
@@ -865,9 +881,10 @@ Her journey began as a Faculty with <a href="https://www.artofliving.org/in-en">
     });
   }
 
-  // Build modal grid for a key
+  // Open modal and populate with modal-cards (clickable anchors for GLightbox)
   function openCategoryModal(key) {
     const items = GALLERIES[key] || [];
+
     modalTitle.textContent = {
       corporates: 'Corporates & Startups',
       educational: 'Educational',
@@ -882,52 +899,62 @@ Her journey began as a Faculty with <a href="https://www.artofliving.org/in-en">
       items.forEach(it => {
         const card = document.createElement('div');
         card.className = 'modal-card';
+
+        // anchor that GLightbox will pick up
+        const a = document.createElement('a');
+        a.href = it.src;
+        a.className = 'glightbox';
+        a.setAttribute('data-gallery', key + '-gallery');
+        a.setAttribute('data-title', it.caption || '');
+        a.setAttribute('aria-label', 'Open image in lightbox');
+
         const img = document.createElement('div');
         img.className = 'card-image';
         img.style.backgroundImage = `url('${it.src}')`;
-        const body = document.createElement('div');
-        body.className = 'card-body';
-        const title = document.createElement('div');
-        title.className = 'card-title';
-        title.textContent = it.caption || '';
-        const meta = document.createElement('div');
-        meta.className = 'card-meta';
-        meta.textContent = ''; // extra meta if you want
+
+        const view = document.createElement('div');
+        view.className = 'view-more';
+        view.innerHTML = '<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M12 5C7 5 2.73 8.11 1 12c1.73 3.89 6 7 11 7s9.27-3.11 11-7c-1.73-3.89-6-7-11-7z\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"12\" cy=\"12\" r=\"3\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg><span style=\"margin-left:6px;\">View more</span>';
+
+        const body = document.createElement('div'); body.className = 'card-body';
+        const title = document.createElement('div'); title.className = 'card-title'; title.textContent = it.caption || '';
         body.appendChild(title);
-        body.appendChild(meta);
-        card.appendChild(img);
+
+        a.appendChild(img);
+        a.appendChild(view);
+        card.appendChild(a);
         card.appendChild(body);
         modalGrid.appendChild(card);
       });
     }
 
+    // Initialize or refresh GLightbox if available
+    if (window.GLightbox) {
+      if (window._pfLightbox) { window._pfLightbox.destroy(); }
+      window._pfLightbox = GLightbox({ selector: '.glightbox' });
+    }
+
     modal.classList.add('open');
-    modal.setAttribute('aria-hidden','false');
-    // lock scroll
+    modal.setAttribute('aria-hidden', 'false');
     document.documentElement.style.overflow = 'hidden';
-    // focus modal for accessibility
     modalClose.focus();
   }
 
   function closeModal() {
     modal.classList.remove('open');
-    modal.setAttribute('aria-hidden','true');
+    modal.setAttribute('aria-hidden', 'true');
     modalGrid.innerHTML = '';
     document.documentElement.style.overflow = '';
   }
 
-  // Tab click -> filter category cards
+  // event bindings
   tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      const filter = tab.getAttribute('data-filter') || '*';
-      applyCardFilter(filter);
-    });
+    tab.addEventListener('click', () => applyCardFilter(tab.getAttribute('data-filter') || '*'));
   });
 
-  // Category card click -> open modal with items for that category
   categoryCards.forEach(card => {
     card.addEventListener('click', () => {
-      const key = card.getAttribute('data-key'); // corporates, educational, wellbeing, online
+      const key = card.getAttribute('data-key');
       if (key) openCategoryModal(key);
     });
     card.addEventListener('keydown', (e) => {
@@ -939,16 +966,16 @@ Her journey began as a Faculty with <a href="https://www.artofliving.org/in-en">
     });
   });
 
-  // modal close handlers
   modalClose.addEventListener('click', closeModal);
   modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
 
-  // initial: show all category cards
+  // initial state
   applyCardFilter('*');
 
 })();
 </script>
+
 
 
   <!-- Vendor JS Files -->
